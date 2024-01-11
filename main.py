@@ -1,4 +1,4 @@
-import board, pieces, ai
+import boardai, pieces, ai
 from move import Move
 
 # Returns a move object based on the users input. Does not check if the move is valid.
@@ -9,20 +9,20 @@ def get_user_move():
 
     try:
         xfrom = letter_to_xpos(move_str[0:1])
-        yfrom = 8 - int(move_str[1:2]) # The board is drawn "upside down", so flip the y coordinate.
+        yfrom = 8 - int(move_str[1:2]) # The boardai is drawn "upside down", so flip the y coordinate.
         xto = letter_to_xpos(move_str[2:3])
-        yto = 8 - int(move_str[3:4]) # The board is drawn "upside down", so flip the y coordinate.
+        yto = 8 - int(move_str[3:4]) # The boardai is drawn "upside down", so flip the y coordinate.
         return Move(xfrom, yfrom, xto, yto)
     except ValueError:
         print("Invalid format. Example: A2 A4")
         return get_user_move()
 
 # Returns a valid move based on the users input.
-def get_valid_user_move(board):
+def get_valid_user_move(boardai):
     while True:
         move = get_user_move()
         valid = False
-        possible_moves = board.get_possible_moves(pieces.Piece.WHITE)
+        possible_moves = boardai.get_possible_moves(pieces.Piece.WHITE)
         # No possible moves
         if (not possible_moves):
             return 0
@@ -38,7 +38,7 @@ def get_valid_user_move(board):
             print("Invalid move.")
     return move
 
-# Converts a letter (A-H) to the x position on the chess board.
+# Converts a letter (A-H) to the x position on the chess boardai.
 def letter_to_xpos(letter):
     letter = letter.upper()
     if letter == 'A':
@@ -63,33 +63,33 @@ def letter_to_xpos(letter):
 #
 # Entry point.
 #
-board = board.Board.new()
-print(board.to_string())
+boardai = boardai.Boardai.new()
+print(boardai.to_string())
 
 while True:
-    move = get_valid_user_move(board)
+    move = get_valid_user_move(boardai)
     if (move == 0):
-        if (board.is_check(pieces.Piece.WHITE)):
+        if (boardai.is_check(pieces.Piece.WHITE)):
             print("Checkmate. Black Wins.")
             break
         else:
             print("Stalemate.")
             break
 
-    board.perform_move(move)
+    boardai.perform_move(move)
 
     print("User move: " + move.to_string())
-    print(board.to_string())
+    print(boardai.to_string())
 
-    ai_move = ai.AI.get_ai_move(board, [])
+    ai_move = ai.AI.get_ai_move(boardai, [])
     if (ai_move == 0):
-        if (board.is_check(pieces.Piece.BLACK)):
+        if (boardai.is_check(pieces.Piece.BLACK)):
             print("Checkmate. White wins.")
             break
         else:
             print("Stalemate.")
             break
 
-    board.perform_move(ai_move)
+    boardai.perform_move(ai_move)
     print("AI move: " + ai_move.to_string())
-    print(board.to_string())
+    print(boardai.to_string())

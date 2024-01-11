@@ -1,8 +1,8 @@
-import board, pieces, numpy
+import boardai, pieces, numpy
 
 class Heuristics:
 
-    # The tables denote the points scored for the position of the chess pieces on the board.
+    # The tables denote the points scored for the position of the chess pieces on the boardai.
 
     PAWN_TABLE = numpy.array([
         [ 0,  0,  0,  0,  0,  0,  0,  0],
@@ -60,14 +60,14 @@ class Heuristics:
     ])
 
     @staticmethod
-    def evaluate(board):
-        material = Heuristics.get_material_score(board)
+    def evaluate(boardai):
+        material = Heuristics.get_material_score(boardai)
 
-        pawns = Heuristics.get_piece_position_score(board, pieces.Pawn.PIECE_TYPE, Heuristics.PAWN_TABLE)
-        knights = Heuristics.get_piece_position_score(board, pieces.Knight.PIECE_TYPE, Heuristics.KNIGHT_TABLE)
-        bishops = Heuristics.get_piece_position_score(board, pieces.Bishop.PIECE_TYPE, Heuristics.BISHOP_TABLE)
-        rooks = Heuristics.get_piece_position_score(board, pieces.Rook.PIECE_TYPE, Heuristics.ROOK_TABLE)
-        queens = Heuristics.get_piece_position_score(board, pieces.Queen.PIECE_TYPE, Heuristics.QUEEN_TABLE)
+        pawns = Heuristics.get_piece_position_score(boardai, pieces.Pawn.PIECE_TYPE, Heuristics.PAWN_TABLE)
+        knights = Heuristics.get_piece_position_score(boardai, pieces.Knight.PIECE_TYPE, Heuristics.KNIGHT_TABLE)
+        bishops = Heuristics.get_piece_position_score(boardai, pieces.Bishop.PIECE_TYPE, Heuristics.BISHOP_TABLE)
+        rooks = Heuristics.get_piece_position_score(boardai, pieces.Rook.PIECE_TYPE, Heuristics.ROOK_TABLE)
+        queens = Heuristics.get_piece_position_score(boardai, pieces.Queen.PIECE_TYPE, Heuristics.QUEEN_TABLE)
 
         return material + pawns + knights + bishops + rooks + queens
 
@@ -75,12 +75,12 @@ class Heuristics:
     # A piece type can for example be: pieces.Pawn.PIECE_TYPE.
     # The table is the 2d numpy array used for the scoring. Example: Heuristics.PAWN_TABLE
     @staticmethod
-    def get_piece_position_score(board, piece_type, table):
+    def get_piece_position_score(boardai, piece_type, table):
         white = 0
         black = 0
         for x in range(8):
             for y in range(8):
-                piece = board.chesspieces[x][y]
+                piece = boardai.chesspieces[x][y]
                 if (piece != 0):
                     if (piece.piece_type == piece_type):
                         if (piece.color == pieces.Piece.WHITE):
@@ -91,12 +91,12 @@ class Heuristics:
         return white - black
 
     @staticmethod
-    def get_material_score(board):
+    def get_material_score(boardai):
         white = 0
         black = 0
         for x in range(8):
             for y in range(8):
-                piece = board.chesspieces[x][y]
+                piece = boardai.chesspieces[x][y]
                 if (piece != 0):
                     if (piece.color == pieces.Piece.WHITE):
                         white += piece.value
@@ -111,14 +111,14 @@ class AI:
     INFINITE = 10000000
 
     @staticmethod
-    def get_ai_move(chessboard, invalid_moves):
+    def get_ai_move(chessboardai, invalid_moves):
         best_move = 0
         best_score = AI.INFINITE
-        for move in chessboard.get_possible_moves(pieces.Piece.BLACK):
+        for move in chessboardai.get_possible_moves(pieces.Piece.BLACK):
             if (AI.is_invalid_move(move, invalid_moves)):
                 continue
 
-            copy = board.Board.clone(chessboard)
+            copy = boardai.Boardai.clone(chessboardai)
             copy.perform_move(move)
 
             score = AI.alphabeta(copy, 2, -AI.INFINITE, AI.INFINITE, True)
@@ -130,11 +130,11 @@ class AI:
         if (best_move == 0):
             return 0
 
-        copy = board.Board.clone(chessboard)
+        copy = boardai.Boardai.clone(chessboardai)
         copy.perform_move(best_move)
         if (copy.is_check(pieces.Piece.BLACK)):
             invalid_moves.append(best_move)
-            return AI.get_ai_move(chessboard, invalid_moves)
+            return AI.get_ai_move(chessboardai, invalid_moves)
 
         return best_move
 
@@ -146,14 +146,14 @@ class AI:
         return False
 
     @staticmethod
-    def minimax(board, depth, maximizing):
+    def minimax(boardai, depth, maximizing):
         if (depth == 0):
-            return Heuristics.evaluate(board)
+            return Heuristics.evaluate(boardai)
 
         if (maximizing):
             best_score = -AI.INFINITE
-            for move in board.get_possible_moves(pieces.Piece.WHITE):
-                copy = board.Board.clone(board)
+            for move in boardai.get_possible_moves(pieces.Piece.WHITE):
+                copy = boardai.Boardai.clone(boardai)
                 copy.perform_move(move)
 
                 score = AI.minimax(copy, depth-1, False)
@@ -162,8 +162,8 @@ class AI:
             return best_score
         else:
             best_score = AI.INFINITE
-            for move in board.get_possible_moves(pieces.Piece.BLACK):
-                copy = board.Board.clone(board)
+            for move in boardai.get_possible_moves(pieces.Piece.BLACK):
+                copy = boardai.Boardai.clone(boardai)
                 copy.perform_move(move)
 
                 score = AI.minimax(copy, depth-1, True)
@@ -172,14 +172,14 @@ class AI:
             return best_score
 
     @staticmethod
-    def alphabeta(chessboard, depth, a, b, maximizing):
+    def alphabeta(chessboardai, depth, a, b, maximizing):
         if (depth == 0):
-            return Heuristics.evaluate(chessboard)
+            return Heuristics.evaluate(chessboardai)
 
         if (maximizing):
             best_score = -AI.INFINITE
-            for move in chessboard.get_possible_moves(pieces.Piece.WHITE):
-                copy = board.Board.clone(chessboard)
+            for move in chessboardai.get_possible_moves(pieces.Piece.WHITE):
+                copy = boardai.Boardai.clone(chessboardai)
                 copy.perform_move(move)
 
                 best_score = max(best_score, AI.alphabeta(copy, depth-1, a, b, False))
@@ -189,8 +189,8 @@ class AI:
             return best_score
         else:
             best_score = AI.INFINITE
-            for move in chessboard.get_possible_moves(pieces.Piece.BLACK):
-                copy = board.Board.clone(chessboard)
+            for move in chessboardai.get_possible_moves(pieces.Piece.BLACK):
+                copy = boardai.Boardai.clone(chessboardai)
                 copy.perform_move(move)
 
                 best_score = min(best_score, AI.alphabeta(copy, depth-1, a, b, True))
