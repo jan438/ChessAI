@@ -26,32 +26,32 @@ class Boardai:
         chess_pieces = [[0 for x in range(Boardai.WIDTH)] for y in range(Boardai.HEIGHT)]
         # Create pawns.
         for x in range(Boardai.WIDTH):
-            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE)
-            chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK)
+            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="xx")
+            chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK, id="xx")
 
         # Create rooks.
-        chess_pieces[0][Boardai.HEIGHT-1] = pieces.Rook(0, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[Boardai.WIDTH-1][Boardai.HEIGHT-1] = pieces.Rook(Boardai.WIDTH-1, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[0][0] = pieces.Rook(0, 0, pieces.Piece.BLACK)
-        chess_pieces[Boardai.WIDTH-1][0] = pieces.Rook(Boardai.WIDTH-1, 0, pieces.Piece.BLACK)
+        chess_pieces[0][Boardai.HEIGHT-1] = pieces.Rook(0, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[Boardai.WIDTH-1][Boardai.HEIGHT-1] = pieces.Rook(Boardai.WIDTH-1, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[0][0] = pieces.Rook(0, 0, pieces.Piece.BLACK, id="xx")
+        chess_pieces[Boardai.WIDTH-1][0] = pieces.Rook(Boardai.WIDTH-1, 0, pieces.Piece.BLACK, id="xx")
 
         # Create Knights.
-        chess_pieces[1][Boardai.HEIGHT-1] = pieces.Knight(1, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[Boardai.WIDTH-2][Boardai.HEIGHT-1] = pieces.Knight(Boardai.WIDTH-2, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[1][0] = pieces.Knight(1, 0, pieces.Piece.BLACK)
-        chess_pieces[Boardai.WIDTH-2][0] = pieces.Knight(Boardai.WIDTH-2, 0, pieces.Piece.BLACK)
-
+        chess_pieces[1][Boardai.HEIGHT-1] = pieces.Knight(1, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[Boardai.WIDTH-2][Boardai.HEIGHT-1] = pieces.Knight(Boardai.WIDTH-2, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[1][0] = pieces.Knight(1, 0, pieces.Piece.BLACK, id="xx")
+        chess_pieces[Boardai.WIDTH-2][0] = pieces.Knight(Boardai.WIDTH-2, 0, pieces.Piece.BLACK, id="xx")
+        
         # Create Bishops.
-        chess_pieces[2][Boardai.HEIGHT-1] = pieces.Bishop(2, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[Boardai.WIDTH-3][Boardai.HEIGHT-1] = pieces.Bishop(Boardai.WIDTH-3, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[2][0] = pieces.Bishop(2, 0, pieces.Piece.BLACK)
-        chess_pieces[Boardai.WIDTH-3][0] = pieces.Bishop(Boardai.WIDTH-3, 0, pieces.Piece.BLACK)
+        chess_pieces[2][Boardai.HEIGHT-1] = pieces.Bishop(2, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[Boardai.WIDTH-3][Boardai.HEIGHT-1] = pieces.Bishop(Boardai.WIDTH-3, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[2][0] = pieces.Bishop(2, 0, pieces.Piece.BLACK, id="xx")
+        chess_pieces[Boardai.WIDTH-3][0] = pieces.Bishop(Boardai.WIDTH-3, 0, pieces.Piece.BLACK, id="xx")
 
         # Create King & Queen.
-        chess_pieces[4][Boardai.HEIGHT-1] = pieces.King(4, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[3][Boardai.HEIGHT-1] = pieces.Queen(3, Boardai.HEIGHT-1, pieces.Piece.WHITE)
-        chess_pieces[4][0] = pieces.King(4, 0, pieces.Piece.BLACK)
-        chess_pieces[3][0] = pieces.Queen(3, 0, pieces.Piece.BLACK)
+        chess_pieces[4][Boardai.HEIGHT-1] = pieces.King(4, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[3][Boardai.HEIGHT-1] = pieces.Queen(3, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[4][0] = pieces.King(4, 0, pieces.Piece.BLACK, id="xx")
+        chess_pieces[3][0] = pieces.Queen(3, 0, pieces.Piece.BLACK, id="xx")
 
         return cls(chess_pieces, False, False)
 

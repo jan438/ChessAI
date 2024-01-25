@@ -6,14 +6,13 @@ class Piece():
     WHITE = "W"
     BLACK = "B"
 
-    def __init__(self, x, y, color, piece_type, value):
+    def __init__(self, x, y, color, piece_type, value, id):
         self.x = x
         self.y = y
         self.color = color
         self.piece_type = piece_type
         self.value = value
-
-
+        self.id = id
 
     # Returns all diagonal moves for this piece. This should therefore only
     # be used by the Bishop and Queen since they are the only pieces that can
@@ -123,8 +122,8 @@ class Rook(Piece):
     PIECE_TYPE = "R"
     VALUE = 500
 
-    def __init__(self, x, y, color):
-        super(Rook, self).__init__(x, y, color, Rook.PIECE_TYPE, Rook.VALUE)
+    def __init__(self, x, y, color, id):
+        super(Rook, self).__init__(x, y, color, Rook.PIECE_TYPE, Rook.VALUE, id)
 
     def get_possible_moves(self, boardai):
         return self.get_possible_horizontal_moves(boardai)
@@ -138,8 +137,8 @@ class Knight(Piece):
     PIECE_TYPE = "N"
     VALUE = 320
 
-    def __init__(self, x, y, color):
-        super(Knight, self).__init__(x, y, color, Knight.PIECE_TYPE, Knight.VALUE)
+    def __init__(self, x, y, color, id):
+        super(Knight, self).__init__(x, y, color, Knight.PIECE_TYPE, Knight.VALUE, id)
 
     def get_possible_moves(self, boardai):
         moves = []
@@ -164,8 +163,8 @@ class Bishop(Piece):
     PIECE_TYPE = "B"
     VALUE = 330
 
-    def __init__(self, x, y, color):
-        super(Bishop, self).__init__(x, y, color, Bishop.PIECE_TYPE, Bishop.VALUE)
+    def __init__(self, x, y, color, id):
+        super(Bishop, self).__init__(x, y, color, Bishop.PIECE_TYPE, Bishop.VALUE, id)
 
     def get_possible_moves(self, boardai):
         return self.get_possible_diagonal_moves(boardai)
@@ -179,8 +178,8 @@ class Queen(Piece):
     PIECE_TYPE = "Q"
     VALUE = 900
 
-    def __init__(self, x, y, color):
-        super(Queen, self).__init__(x, y, color, Queen.PIECE_TYPE, Queen.VALUE)
+    def __init__(self, x, y, color, id):
+        super(Queen, self).__init__(x, y, color, Queen.PIECE_TYPE, Queen.VALUE, id)
 
     def get_possible_moves(self, boardai):
         diagonal = self.get_possible_diagonal_moves(boardai)
@@ -196,8 +195,8 @@ class King(Piece):
     PIECE_TYPE = "K"
     VALUE = 20000
 
-    def __init__(self, x, y, color):
-        super(King, self).__init__(x, y, color, King.PIECE_TYPE, King.VALUE)
+    def __init__(self, x, y, color, id):
+        super(King, self).__init__(x, y, color, King.PIECE_TYPE, King.VALUE, id)
 
     def get_possible_moves(self, boardai):
         moves = []
@@ -273,8 +272,8 @@ class Pawn(Piece):
     PIECE_TYPE = "P"
     VALUE = 100
 
-    def __init__(self, x, y, color):
-        super(Pawn, self).__init__(x, y, color, Pawn.PIECE_TYPE, Pawn.VALUE)
+    def __init__(self, x, y, color, id):
+        super(Pawn, self).__init__(x, y, color, Pawn.PIECE_TYPE, Pawn.VALUE, id)
 
     def is_starting_position(self):
         if (self.color == Piece.BLACK):
