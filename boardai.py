@@ -26,12 +26,12 @@ class Boardai:
         chess_pieces = [[0 for x in range(Boardai.WIDTH)] for y in range(Boardai.HEIGHT)]
         # Create pawns.
         for x in range(Boardai.WIDTH):
-            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="xx")
-            chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK, id="xx")
+            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="WhiePawm_"+str(x))
+            chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK, id="BlackPawn"+str(x))
 
         # Create rooks.
-        chess_pieces[0][Boardai.HEIGHT-1] = pieces.Rook(0, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
-        chess_pieces[Boardai.WIDTH-1][Boardai.HEIGHT-1] = pieces.Rook(Boardai.WIDTH-1, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="xx")
+        chess_pieces[0][Boardai.HEIGHT-1] = pieces.Rook(0, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="WhiteRook_0")
+        chess_pieces[Boardai.WIDTH-1][Boardai.HEIGHT-1] = pieces.Rook(Boardai.WIDTH-1, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="WhiteRook_1")
         chess_pieces[0][0] = pieces.Rook(0, 0, pieces.Piece.BLACK, id="xx")
         chess_pieces[Boardai.WIDTH-1][0] = pieces.Rook(Boardai.WIDTH-1, 0, pieces.Piece.BLACK, id="xx")
 

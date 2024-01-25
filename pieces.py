@@ -129,7 +129,7 @@ class Rook(Piece):
         return self.get_possible_horizontal_moves(boardai)
 
     def clone(self):
-        return Rook(self.x, self.y, self.color)
+        return Rook(self.x, self.y, self.color, id)
 
 
 class Knight(Piece):
@@ -155,7 +155,7 @@ class Knight(Piece):
         return self.remove_null_from_list(moves)
 
     def clone(self):
-        return Knight(self.x, self.y, self.color)
+        return Knight(self.x, self.y, self.color, id)
 
 
 class Bishop(Piece):
@@ -170,7 +170,7 @@ class Bishop(Piece):
         return self.get_possible_diagonal_moves(boardai)
 
     def clone(self):
-        return Bishop(self.x, self.y, self.color)
+        return Bishop(self.x, self.y, self.color, id)
 
 
 class Queen(Piece):
@@ -187,7 +187,7 @@ class Queen(Piece):
         return horizontal + diagonal
 
     def clone(self):
-        return Queen(self.x, self.y, self.color)
+        return Queen(self.x, self.y, self.color, id)
 
 
 class King(Piece):
@@ -264,7 +264,7 @@ class King(Piece):
 
 
     def clone(self):
-        return King(self.x, self.y, self.color)
+        return King(self.x, self.y, self.color, id)
 
 
 class Pawn(Piece):
@@ -309,4 +309,4 @@ class Pawn(Piece):
         return self.remove_null_from_list(moves)
 
     def clone(self):
-        return Pawn(self.x, self.y, self.color)
+        return Pawn(self.x, self.y, self.color, id)
