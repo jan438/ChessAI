@@ -26,7 +26,7 @@ class Boardai:
         chess_pieces = [[0 for x in range(Boardai.WIDTH)] for y in range(Boardai.HEIGHT)]
         # Create pawns.
         for x in range(Boardai.WIDTH):
-            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="WhitePawm_"+str(x))
+            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="WhitePawn_"+str(x))
             chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK, id="BlackPawn_"+str(x))
 
         # Create rooks.
@@ -42,7 +42,7 @@ class Boardai:
         chess_pieces[Boardai.WIDTH-2][0] = pieces.Knight(Boardai.WIDTH-2, 0, pieces.Piece.BLACK, id="BlackKnight_1")
         
         # Create Bishops.
-        chess_pieces[2][Boardai.HEIGHT-1] = pieces.Bishop(2, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="WhiteBSishpp_0")
+        chess_pieces[2][Boardai.HEIGHT-1] = pieces.Bishop(2, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="WhiteBishop_0")
         chess_pieces[Boardai.WIDTH-3][Boardai.HEIGHT-1] = pieces.Bishop(Boardai.WIDTH-3, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="WhiteBishop_1")
         chess_pieces[2][0] = pieces.Bishop(2, 0, pieces.Piece.BLACK, id="BlackBishop_0")
         chess_pieces[Boardai.WIDTH-3][0] = pieces.Bishop(Boardai.WIDTH-3, 0, pieces.Piece.BLACK, id="BlackBishop_1")
