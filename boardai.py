@@ -26,8 +26,8 @@ class Boardai:
         chess_pieces = [[0 for x in range(Boardai.WIDTH)] for y in range(Boardai.HEIGHT)]
         # Create pawns.
         for x in range(Boardai.WIDTH):
-            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="WhiePawm_"+str(x))
-            chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK, id="BlackPawn"+str(x))
+            chess_pieces[x][Boardai.HEIGHT-2] = pieces.Pawn(x, Boardai.HEIGHT-2, pieces.Piece.WHITE, id="WhitePawm_"+str(x))
+            chess_pieces[x][1] = pieces.Pawn(x, 1, pieces.Piece.BLACK, id="BlackPawn_"+str(x))
 
         # Create rooks.
         chess_pieces[0][Boardai.HEIGHT-1] = pieces.Rook(0, Boardai.HEIGHT-1, pieces.Piece.WHITE, id="WhiteRook_0")
