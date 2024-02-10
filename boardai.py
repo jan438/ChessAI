@@ -85,7 +85,7 @@ class Boardai:
             # Check if king-side castling
             if (move.xto - move.xfrom == 2):
                 rook = self.chesspieces[piece.x+1][piece.y]
-                self.move_piece(rook, piece.x+1, piece.y)
+                self.move_piece(rook, piece.x-1, piece.y)
             # Check if queen-side castling
             if (move.xto - move.xfrom == -2):
                 rook = self.chesspieces[piece.x-2][piece.y]
